@@ -144,9 +144,10 @@ impl OIDCFilter {
         } else {
             "HttpOnly; Secure"
         };
+        debug!("Setting cookie, expiration was: {} but setting 3600", t.expires_in);
         return format!(
             "{}={};Max-Age={};{}",
-            self.config.cookie_name, t.id_token, t.expires_in, flags
+            self.config.cookie_name, t.id_token, 3600, flags
         );
     }
 
